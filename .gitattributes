@@ -1,0 +1,2 @@
+# Keep the patch hash reproducible on Windows; diff context whitespace is required.
+patches/*.patch text eol=lf -whitespace

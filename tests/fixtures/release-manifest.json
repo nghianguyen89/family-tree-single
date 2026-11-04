@@ -1,0 +1,18 @@
+{
+  "manifestVersion": 1,
+  "repository": "nghianguyen89/family-tree-single",
+  "releases": [
+    {
+      "version": "2.3.1",
+      "notes": "Fixture: sửa lỗi quan trọng cho môi trường thử.",
+      "mandatory": {
+        "reason": "Fixture: các phiên bản 2.x trước 2.3.1 cần bản sửa này.",
+        "affected": [{ "minVersion": "2.0.0", "maxVersionExclusive": "2.3.1" }]
+      }
+    },
+    {
+      "version": "2.4.0",
+      "notes": "Fixture: bản thường có thể chọn nâng cấp sau."
+    }
+  ]
+}

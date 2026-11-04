@@ -1,0 +1,546 @@
+/* Theme editor: existing DESIGN.md tokens and Tailwind palettes only.
+   Semantic colors control shared components; palette overrides cover legacy UI. */
+@theme {
+  --color-primary: #1c1917;
+  --color-secondary: #57534e;
+  --color-tertiary: #d97706;
+  --color-neutral: #fafaf9;
+  --color-surface: #ffffff;
+  --color-border: #e7e5e4;
+  --color-error: #dc2626;
+}
+
+:root {
+  color-scheme: light;
+  --background: var(--color-neutral);
+  --foreground: var(--color-primary);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --color-primary: #fafaf9;
+  --color-secondary: #d6d3d1;
+  --color-tertiary: #d97706;
+  --color-neutral: #1c1917;
+  --color-surface: #292524;
+  --color-border: #44403c;
+  --color-error: #dc2626;
+
+  /* Existing stone utilities now follow the active theme. */
+  --color-stone-50: #1c1917;
+  --color-stone-100: #292524;
+  --color-stone-200: #44403c;
+  --color-stone-300: #57534e;
+  --color-stone-400: #a8a29e;
+  --color-stone-500: #a8a29e;
+  --color-stone-600: #d6d3d1;
+  --color-stone-700: #e7e5e4;
+  --color-stone-800: #f5f5f4;
+  --color-stone-900: #fafaf9;
+  --color-stone-950: #fafaf9;
+}
+
+.theme-icon-sun {
+  display: none;
+}
+[data-theme='dark'] .theme-icon-sun {
+  display: block;
+}
+[data-theme='dark'] .theme-icon-moon {
+  display: none;
+}
+
+/* Keep primary actions readable when their background becomes light. */
+[data-theme='dark'] .btn-primary:hover {
+  background-color: var(--color-secondary);
+}
+[data-theme='dark'] .btn-secondary:hover {
+  background-color: var(--color-primary);
+}
+[data-theme='dark'] .btn-amber {
+  color: var(--color-neutral);
+}
+
+/* Existing accent palettes: muted layers and readable text in dark mode. */
+:root[data-theme='dark'] {
+  --color-amber-50: color-mix(
+    in srgb,
+    var(--color-amber-500) 8%,
+    var(--color-surface)
+  );
+  --color-amber-100: color-mix(
+    in srgb,
+    var(--color-amber-500) 12%,
+    var(--color-surface)
+  );
+  --color-amber-200: color-mix(
+    in srgb,
+    var(--color-amber-500) 22%,
+    var(--color-surface)
+  );
+  --color-blue-50: color-mix(
+    in srgb,
+    var(--color-blue-500) 8%,
+    var(--color-surface)
+  );
+  --color-blue-100: color-mix(
+    in srgb,
+    var(--color-blue-500) 12%,
+    var(--color-surface)
+  );
+  --color-blue-200: color-mix(
+    in srgb,
+    var(--color-blue-500) 22%,
+    var(--color-surface)
+  );
+  --color-emerald-50: color-mix(
+    in srgb,
+    var(--color-emerald-500) 8%,
+    var(--color-surface)
+  );
+  --color-emerald-100: color-mix(
+    in srgb,
+    var(--color-emerald-500) 12%,
+    var(--color-surface)
+  );
+  --color-emerald-200: color-mix(
+    in srgb,
+    var(--color-emerald-500) 22%,
+    var(--color-surface)
+  );
+  --color-green-50: color-mix(
+    in srgb,
+    var(--color-green-500) 8%,
+    var(--color-surface)
+  );
+  --color-green-100: color-mix(
+    in srgb,
+    var(--color-green-500) 12%,
+    var(--color-surface)
+  );
+  --color-green-200: color-mix(
+    in srgb,
+    var(--color-green-500) 22%,
+    var(--color-surface)
+  );
+  --color-indigo-50: color-mix(
+    in srgb,
+    var(--color-indigo-500) 8%,
+    var(--color-surface)
+  );
+  --color-indigo-100: color-mix(
+    in srgb,
+    var(--color-indigo-500) 12%,
+    var(--color-surface)
+  );
+  --color-indigo-200: color-mix(
+    in srgb,
+    var(--color-indigo-500) 22%,
+    var(--color-surface)
+  );
+  --color-orange-50: color-mix(
+    in srgb,
+    var(--color-orange-500) 8%,
+    var(--color-surface)
+  );
+  --color-orange-100: color-mix(
+    in srgb,
+    var(--color-orange-500) 12%,
+    var(--color-surface)
+  );
+  --color-orange-200: color-mix(
+    in srgb,
+    var(--color-orange-500) 22%,
+    var(--color-surface)
+  );
+  --color-pink-50: color-mix(
+    in srgb,
+    var(--color-pink-500) 8%,
+    var(--color-surface)
+  );
+  --color-pink-100: color-mix(
+    in srgb,
+    var(--color-pink-500) 12%,
+    var(--color-surface)
+  );
+  --color-pink-200: color-mix(
+    in srgb,
+    var(--color-pink-500) 22%,
+    var(--color-surface)
+  );
+  --color-purple-50: color-mix(
+    in srgb,
+    var(--color-purple-500) 8%,
+    var(--color-surface)
+  );
+  --color-purple-100: color-mix(
+    in srgb,
+    var(--color-purple-500) 12%,
+    var(--color-surface)
+  );
+  --color-purple-200: color-mix(
+    in srgb,
+    var(--color-purple-500) 22%,
+    var(--color-surface)
+  );
+  --color-red-50: color-mix(
+    in srgb,
+    var(--color-red-500) 8%,
+    var(--color-surface)
+  );
+  --color-red-100: color-mix(
+    in srgb,
+    var(--color-red-500) 12%,
+    var(--color-surface)
+  );
+  --color-red-200: color-mix(
+    in srgb,
+    var(--color-red-500) 22%,
+    var(--color-surface)
+  );
+  --color-rose-50: color-mix(
+    in srgb,
+    var(--color-rose-500) 8%,
+    var(--color-surface)
+  );
+  --color-rose-100: color-mix(
+    in srgb,
+    var(--color-rose-500) 12%,
+    var(--color-surface)
+  );
+  --color-rose-200: color-mix(
+    in srgb,
+    var(--color-rose-500) 22%,
+    var(--color-surface)
+  );
+  --color-sky-50: color-mix(
+    in srgb,
+    var(--color-sky-500) 8%,
+    var(--color-surface)
+  );
+  --color-sky-100: color-mix(
+    in srgb,
+    var(--color-sky-500) 12%,
+    var(--color-surface)
+  );
+  --color-sky-200: color-mix(
+    in srgb,
+    var(--color-sky-500) 22%,
+    var(--color-surface)
+  );
+  --color-teal-50: color-mix(
+    in srgb,
+    var(--color-teal-500) 8%,
+    var(--color-surface)
+  );
+  --color-teal-100: color-mix(
+    in srgb,
+    var(--color-teal-500) 12%,
+    var(--color-surface)
+  );
+  --color-teal-200: color-mix(
+    in srgb,
+    var(--color-teal-500) 22%,
+    var(--color-surface)
+  );
+}
+@utility text-amber-600 {
+  @variant dark {
+    color: var(--color-amber-300);
+  }
+}
+@utility text-amber-700 {
+  @variant dark {
+    color: var(--color-amber-300);
+  }
+}
+@utility text-amber-800 {
+  @variant dark {
+    color: var(--color-amber-300);
+  }
+}
+@utility text-amber-900 {
+  @variant dark {
+    color: var(--color-amber-300);
+  }
+}
+@utility text-amber-950 {
+  @variant dark {
+    color: var(--color-amber-300);
+  }
+}
+@utility text-blue-600 {
+  @variant dark {
+    color: var(--color-blue-300);
+  }
+}
+@utility text-blue-700 {
+  @variant dark {
+    color: var(--color-blue-300);
+  }
+}
+@utility text-blue-800 {
+  @variant dark {
+    color: var(--color-blue-300);
+  }
+}
+@utility text-blue-900 {
+  @variant dark {
+    color: var(--color-blue-300);
+  }
+}
+@utility text-blue-950 {
+  @variant dark {
+    color: var(--color-blue-300);
+  }
+}
+@utility text-emerald-600 {
+  @variant dark {
+    color: var(--color-emerald-300);
+  }
+}
+@utility text-emerald-700 {
+  @variant dark {
+    color: var(--color-emerald-300);
+  }
+}
+@utility text-emerald-800 {
+  @variant dark {
+    color: var(--color-emerald-300);
+  }
+}
+@utility text-emerald-900 {
+  @variant dark {
+    color: var(--color-emerald-300);
+  }
+}
+@utility text-emerald-950 {
+  @variant dark {
+    color: var(--color-emerald-300);
+  }
+}
+@utility text-green-600 {
+  @variant dark {
+    color: var(--color-green-300);
+  }
+}
+@utility text-green-700 {
+  @variant dark {
+    color: var(--color-green-300);
+  }
+}
+@utility text-green-800 {
+  @variant dark {
+    color: var(--color-green-300);
+  }
+}
+@utility text-green-900 {
+  @variant dark {
+    color: var(--color-green-300);
+  }
+}
+@utility text-green-950 {
+  @variant dark {
+    color: var(--color-green-300);
+  }
+}
+@utility text-indigo-600 {
+  @variant dark {
+    color: var(--color-indigo-300);
+  }
+}
+@utility text-indigo-700 {
+  @variant dark {
+    color: var(--color-indigo-300);
+  }
+}
+@utility text-indigo-800 {
+  @variant dark {
+    color: var(--color-indigo-300);
+  }
+}
+@utility text-indigo-900 {
+  @variant dark {
+    color: var(--color-indigo-300);
+  }
+}
+@utility text-indigo-950 {
+  @variant dark {
+    color: var(--color-indigo-300);
+  }
+}
+@utility text-orange-600 {
+  @variant dark {
+    color: var(--color-orange-300);
+  }
+}
+@utility text-orange-700 {
+  @variant dark {
+    color: var(--color-orange-300);
+  }
+}
+@utility text-orange-800 {
+  @variant dark {
+    color: var(--color-orange-300);
+  }
+}
+@utility text-orange-900 {
+  @variant dark {
+    color: var(--color-orange-300);
+  }
+}
+@utility text-orange-950 {
+  @variant dark {
+    color: var(--color-orange-300);
+  }
+}
+@utility text-pink-600 {
+  @variant dark {
+    color: var(--color-pink-300);
+  }
+}
+@utility text-pink-700 {
+  @variant dark {
+    color: var(--color-pink-300);
+  }
+}
+@utility text-pink-800 {
+  @variant dark {
+    color: var(--color-pink-300);
+  }
+}
+@utility text-pink-900 {
+  @variant dark {
+    color: var(--color-pink-300);
+  }
+}
+@utility text-pink-950 {
+  @variant dark {
+    color: var(--color-pink-300);
+  }
+}
+@utility text-purple-600 {
+  @variant dark {
+    color: var(--color-purple-300);
+  }
+}
+@utility text-purple-700 {
+  @variant dark {
+    color: var(--color-purple-300);
+  }
+}
+@utility text-purple-800 {
+  @variant dark {
+    color: var(--color-purple-300);
+  }
+}
+@utility text-purple-900 {
+  @variant dark {
+    color: var(--color-purple-300);
+  }
+}
+@utility text-purple-950 {
+  @variant dark {
+    color: var(--color-purple-300);
+  }
+}
+@utility text-red-600 {
+  @variant dark {
+    color: var(--color-red-300);
+  }
+}
+@utility text-red-700 {
+  @variant dark {
+    color: var(--color-red-300);
+  }
+}
+@utility text-red-800 {
+  @variant dark {
+    color: var(--color-red-300);
+  }
+}
+@utility text-red-900 {
+  @variant dark {
+    color: var(--color-red-300);
+  }
+}
+@utility text-red-950 {
+  @variant dark {
+    color: var(--color-red-300);
+  }
+}
+@utility text-rose-600 {
+  @variant dark {
+    color: var(--color-rose-300);
+  }
+}
+@utility text-rose-700 {
+  @variant dark {
+    color: var(--color-rose-300);
+  }
+}
+@utility text-rose-800 {
+  @variant dark {
+    color: var(--color-rose-300);
+  }
+}
+@utility text-rose-900 {
+  @variant dark {
+    color: var(--color-rose-300);
+  }
+}
+@utility text-rose-950 {
+  @variant dark {
+    color: var(--color-rose-300);
+  }
+}
+@utility text-sky-600 {
+  @variant dark {
+    color: var(--color-sky-300);
+  }
+}
+@utility text-sky-700 {
+  @variant dark {
+    color: var(--color-sky-300);
+  }
+}
+@utility text-sky-800 {
+  @variant dark {
+    color: var(--color-sky-300);
+  }
+}
+@utility text-sky-900 {
+  @variant dark {
+    color: var(--color-sky-300);
+  }
+}
+@utility text-sky-950 {
+  @variant dark {
+    color: var(--color-sky-300);
+  }
+}
+@utility text-teal-600 {
+  @variant dark {
+    color: var(--color-teal-300);
+  }
+}
+@utility text-teal-700 {
+  @variant dark {
+    color: var(--color-teal-300);
+  }
+}
+@utility text-teal-800 {
+  @variant dark {
+    color: var(--color-teal-300);
+  }
+}
+@utility text-teal-900 {
+  @variant dark {
+    color: var(--color-teal-300);
+  }
+}
+@utility text-teal-950 {
+  @variant dark {
+    color: var(--color-teal-300);
+  }
+}
